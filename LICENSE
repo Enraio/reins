@@ -1,0 +1,30 @@
+reins-hook — Proprietary License
+Copyright (c) 2026 Enraio. All rights reserved.
+
+This repository distributes the reins-hook software in BINARY FORM ONLY. The
+reins-hook binaries are proprietary and confidential. No license, right, or
+interest in the underlying source code is granted or implied; the source code
+is not distributed with these binaries.
+
+Grant. Subject to these terms, you are permitted to download, install, and run
+the reins-hook binaries for their intended purpose on machines you control.
+
+Restrictions. You may not, in whole or in part: (a) decompile, disassemble, or
+otherwise reverse engineer the binaries, except to the extent this restriction
+is prohibited by applicable law; (b) modify, adapt, or create derivative works
+of the binaries; (c) redistribute, sublicense, sell, rent, lease, or otherwise
+make the binaries available to any third party; or (d) remove or alter any
+proprietary notices.
+
+Installation scripts. The installation and helper scripts in this repository
+(for example, install.sh) may be used, copied, and modified for the sole
+purpose of downloading and installing the reins-hook binaries.
+
+No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+Limitation of liability. IN NO EVENT SHALL ENRAIO OR ITS CONTRIBUTORS BE LIABLE
+FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR
+THE USE OR OTHER DEALINGS IN THE SOFTWARE.
