@@ -1,16 +1,22 @@
 #!/bin/sh
-# reins-hook installer — downloads the latest release binary for this host.
+# reins installer — downloads the latest release binary for this host.
 #
-#   curl -fsSL https://raw.githubusercontent.com/enraio/reins-hook/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/enraio/reins/main/install.sh | sh
 #
-# This file is DISTRIBUTED FROM THE PUBLIC REPO (enraio/reins-hook). It ships
+# This file is DISTRIBUTED FROM THE PUBLIC REPO (enraio/reins). It ships
 # no source; it only fetches a signed-by-checksum binary from Releases. macOS
 # and Linux (incl. WSL). For native Windows, grab the .zip from the Releases
 # page instead. Installs are CLI-only, so macOS Gatekeeper never quarantines it.
 set -eu
 
-REPO="enraio/reins-hook"
-BIN="reins-hook"
+REPO="enraio/reins"
+
+# The daemon was renamed reins-hook -> reins. Releases cut before the rename
+# ship `reins-hook_*` assets; releases after it ship `reins_*`. Resolve which
+# one this tag actually published rather than guessing, so the installer keeps
+# working across the boundary in both directions.
+BIN=""
+
 INSTALL_DIR="${REINS_INSTALL_DIR:-$HOME/.local/bin}"
 
 fail() {
@@ -40,8 +46,17 @@ ver=$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" |
 [ -n "$ver" ] || fail "could not resolve the latest release of $REPO"
 num=${ver#v}
 
-url="https://github.com/$REPO/releases/download/$ver/${BIN}_${num}_${os}_${arch}.tar.gz"
 sums="https://github.com/$REPO/releases/download/$ver/checksums.txt"
+
+for candidate in reins reins-hook; do
+	probe="https://github.com/$REPO/releases/download/$ver/${candidate}_${num}_${os}_${arch}.tar.gz"
+	if curl -fsIL -o /dev/null "$probe" 2>/dev/null; then
+		BIN="$candidate"
+		url="$probe"
+		break
+	fi
+done
+[ -n "$BIN" ] || fail "no binary for $os/$arch in $ver" 
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
