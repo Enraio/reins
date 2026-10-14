@@ -87,4 +87,4 @@ case ":$PATH:" in
 *":$INSTALL_DIR:"*) ;;
 *) echo "Add it to your PATH:  export PATH=\"$INSTALL_DIR:\$PATH\"" ;;
 esac
-echo "Next: connect it to Claude Code and pair your phone — see https://github.com/$REPO#setup"
+echo "Next: run 'reins setup' to connect your agents and pair your phone — see https://reins.enraio.com/docs"
